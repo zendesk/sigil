@@ -5,7 +5,6 @@ import (
 	"crypto/rsa"
 	"crypto/x509"
 	"encoding/pem"
-	"io/ioutil"
 	"os"
 	"strings"
 
@@ -107,7 +106,7 @@ func savePrivPEMKey(fileName string, key *rsa.PrivateKey) error {
 	}
 
 	// returns err
-	return ioutil.WriteFile(fileName, pem.EncodeToMemory(privateKey), 0o600)
+	return os.WriteFile(fileName, pem.EncodeToMemory(privateKey), 0o600)
 }
 
 func savePublicPEMKey(fileName string, pubkey *rsa.PublicKey) error {
@@ -116,7 +115,7 @@ func savePublicPEMKey(fileName string, pubkey *rsa.PublicKey) error {
 		return err
 	}
 	// returns err
-	return ioutil.WriteFile(fileName, ssh.MarshalAuthorizedKey(pub), 0o600)
+	return os.WriteFile(fileName, ssh.MarshalAuthorizedKey(pub), 0o600)
 }
 
 func deleteTempKey(keyPath string) error {
