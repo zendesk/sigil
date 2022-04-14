@@ -27,7 +27,7 @@ jobs:
       - name: Run Generate
         run: go generate ./...
       - name: golangci-lint
-        uses: zendesk/golangci-lint-action@v2
+        uses: zendesk/golangci-lint-action@v3
         with:
           # Required: the version of golangci-lint is required and must be specified without patch version: we always use the latest patch version.
           version: latest
